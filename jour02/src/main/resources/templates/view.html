@@ -1,0 +1,76 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Exemple Thymeleaf</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1 th:text="${message}">Message par défaut</h1>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Exemple Thymeleaf Liste</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Liste des fruits</h1>-->
+<!--<ul>-->
+<!--    &lt;!&ndash; Itération sur la liste passée par le contrôleur &ndash;&gt;-->
+<!--    <li th:each="fruit : ${fruits}" th:text="${fruit}"></li>-->
+<!--</ul>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Formulaire Thymeleaf</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Bienvenue !</h1>-->
+
+<!--&lt;!&ndash; Formulaire &ndash;&gt;-->
+<!--<form th:action="@{/submit}" method="post">-->
+<!--    <label for="name">Votre prénom :</label>-->
+<!--    <input type="text" id="name" name="name" required />-->
+<!--    <button type="submit">Envoyer</button>-->
+<!--</form>-->
+
+<!--<hr>-->
+
+<!--&lt;!&ndash; Affichage du message s'il existe &ndash;&gt;-->
+<!--<p th:if="${welcomeMessage}" th:text="${welcomeMessage}"></p>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulaire Thymeleaf avec validation</title>
+</head>
+<body>
+<h1>Formulaire avec validation</h1>
+
+<form th:action="@{/submit}" th:object="${userForm}" method="post">
+    <div>
+        <label for="name">Prénom :</label>
+        <input type="text" id="name" th:field="*{name}" />
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+    </div>
+
+    <div>
+        <label for="age">Âge :</label>
+        <input type="number" id="age" th:field="*{age}" />
+        <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+    </div>
+
+    <button type="submit">Envoyer</button>
+</form>
+
+<hr>
+
+<p th:if="${welcomeMessage}" th:text="${welcomeMessage}"></p>
+</body>
+</html>
+
