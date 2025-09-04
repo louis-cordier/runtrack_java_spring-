@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: dev   # profil par défaut
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+greeting:
+  message: "Bienvenue sur l'environnement DEV !🚀"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+greeting:
+  message: "Bienvenue sur l'environnement PROD! 🏭"
